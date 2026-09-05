@@ -1,0 +1,719 @@
+{
+  "version": "1.0",
+  "meta": {
+    "fingerprint": "45da375dca7ffb251740f53d58146d7fa13fd2ec02ff02567c09392bcc79edaa",
+    "bpm": 129.2,
+    "durationMs": 271701,
+    "genre": "auto",
+    "mood": "",
+    "title": "Zedd \u2014 Clarity"
+  },
+  "modulators": [
+    {
+      "id": "hueDrift",
+      "waveform": "perlin",
+      "period": 8,
+      "phase": 0.0,
+      "target": "hue",
+      "amplitudeSource": "energy",
+      "amplitude": 1.0,
+      "cost": "paint"
+    },
+    {
+      "id": "hueFast",
+      "waveform": "sine",
+      "period": 3,
+      "phase": 0.4,
+      "target": "hue",
+      "amplitudeSource": "energy",
+      "amplitude": 0.5,
+      "cost": "paint"
+    },
+    {
+      "id": "satDrift",
+      "waveform": "sine",
+      "period": 4,
+      "phase": 0.25,
+      "target": "sat",
+      "amplitudeSource": "energy",
+      "amplitude": 0.8,
+      "cost": "paint"
+    },
+    {
+      "id": "lightDrift",
+      "waveform": "perlin",
+      "period": 10,
+      "phase": 0.3,
+      "target": "light",
+      "amplitudeSource": "energy",
+      "amplitude": 0.7,
+      "cost": "paint"
+    },
+    {
+      "id": "contrastDrift",
+      "waveform": "sine",
+      "period": 5,
+      "phase": 0.55,
+      "target": "contrast",
+      "amplitudeSource": "energy",
+      "amplitude": 0.7,
+      "cost": "paint"
+    },
+    {
+      "id": "breath",
+      "waveform": "sine",
+      "period": 3,
+      "phase": 0.05,
+      "target": "breath",
+      "amplitudeSource": "energy",
+      "amplitude": 0.8,
+      "cost": "composite"
+    },
+    {
+      "id": "radiusFlow",
+      "waveform": "triangle",
+      "period": 5,
+      "phase": 0.15,
+      "target": "radius",
+      "amplitudeSource": "energy",
+      "amplitude": 0.9,
+      "cost": "paint"
+    },
+    {
+      "id": "kerning",
+      "waveform": "perlin",
+      "period": 8,
+      "phase": 0.5,
+      "target": "kerning",
+      "amplitudeSource": "fixed",
+      "amplitude": 0.6,
+      "cost": "layout"
+    },
+    {
+      "id": "camX",
+      "waveform": "sine",
+      "period": 5,
+      "phase": 0.0,
+      "target": "camX",
+      "amplitudeSource": "energy",
+      "amplitude": 0.7,
+      "cost": "composite"
+    },
+    {
+      "id": "camY",
+      "waveform": "sine",
+      "period": 6,
+      "phase": 0.33,
+      "target": "camY",
+      "amplitudeSource": "energy",
+      "amplitude": 0.55,
+      "cost": "composite"
+    },
+    {
+      "id": "camZ",
+      "waveform": "perlin",
+      "period": 9,
+      "phase": 0.6,
+      "target": "camZ",
+      "amplitudeSource": "energy",
+      "amplitude": 0.8,
+      "cost": "composite"
+    },
+    {
+      "id": "pulseBase",
+      "waveform": "sine",
+      "period": 0.4643962848297214,
+      "phase": 0.0,
+      "target": "pulse",
+      "amplitudeSource": "energy",
+      "amplitude": 0.25,
+      "cost": "composite"
+    },
+    {
+      "id": "shakeMod",
+      "waveform": "sine",
+      "period": 0.4643962848297214,
+      "phase": 0.7,
+      "target": "shake",
+      "amplitudeSource": "fixed",
+      "amplitude": 0.1,
+      "cost": "composite"
+    }
+  ],
+  "hits": [
+    {
+      "time": 1997,
+      "target": "pulseBase",
+      "impulse": 0.734,
+      "decay": 180
+    },
+    {
+      "time": 2229,
+      "target": "pulseBase",
+      "impulse": 0.46799999999999997,
+      "decay": 180
+    },
+    {
+      "time": 2694,
+      "target": "pulseBase",
+      "impulse": 0.483,
+      "decay": 180
+    },
+    {
+      "time": 3878,
+      "target": "pulseBase",
+      "impulse": 0.483,
+      "decay": 180
+    },
+    {
+      "time": 6223,
+      "target": "pulseBase",
+      "impulse": 0.476,
+      "decay": 180
+    },
+    {
+      "time": 6455,
+      "target": "pulseBase",
+      "impulse": 0.478,
+      "decay": 180
+    },
+    {
+      "time": 6920,
+      "target": "pulseBase",
+      "impulse": 0.45799999999999996,
+      "decay": 180
+    },
+    {
+      "time": 8103,
+      "target": "pulseBase",
+      "impulse": 0.45699999999999996,
+      "decay": 180
+    },
+    {
+      "time": 9033,
+      "target": "pulseBase",
+      "impulse": 0.632,
+      "decay": 180
+    },
+    {
+      "time": 9265,
+      "target": "pulseBase",
+      "impulse": 0.523,
+      "decay": 180
+    },
+    {
+      "time": 9497,
+      "target": "pulseBase",
+      "impulse": 0.517,
+      "decay": 180
+    },
+    {
+      "time": 9892,
+      "target": "pulseBase",
+      "impulse": 0.603,
+      "decay": 180
+    },
+    {
+      "time": 10449,
+      "target": "pulseBase",
+      "impulse": 0.515,
+      "decay": 180
+    },
+    {
+      "time": 11146,
+      "target": "pulseBase",
+      "impulse": 0.627,
+      "decay": 180
+    },
+    {
+      "time": 12725,
+      "target": "pulseBase",
+      "impulse": 0.46299999999999997,
+      "decay": 180
+    },
+    {
+      "time": 13189,
+      "target": "pulseBase",
+      "impulse": 0.538,
+      "decay": 180
+    },
+    {
+      "time": 13723,
+      "target": "pulseBase",
+      "impulse": 0.5429999999999999,
+      "decay": 180
+    },
+    {
+      "time": 14071,
+      "target": "pulseBase",
+      "impulse": 0.498,
+      "decay": 180
+    },
+    {
+      "time": 14187,
+      "target": "pulseBase",
+      "impulse": 0.505,
+      "decay": 180
+    },
+    {
+      "time": 14629,
+      "target": "pulseBase",
+      "impulse": 0.45999999999999996,
+      "decay": 180
+    },
+    {
+      "time": 14907,
+      "target": "pulseBase",
+      "impulse": 0.506,
+      "decay": 180
+    },
+    {
+      "time": 15372,
+      "target": "pulseBase",
+      "impulse": 0.514,
+      "decay": 180
+    },
+    {
+      "time": 15836,
+      "target": "pulseBase",
+      "impulse": 0.487,
+      "decay": 180
+    },
+    {
+      "time": 16300,
+      "target": "pulseBase",
+      "impulse": 0.483,
+      "decay": 180
+    },
+    {
+      "time": 16533,
+      "target": "pulseBase",
+      "impulse": 0.485,
+      "decay": 180
+    },
+    {
+      "time": 16765,
+      "target": "pulseBase",
+      "impulse": 0.49,
+      "decay": 180
+    },
+    {
+      "time": 16927,
+      "target": "pulseBase",
+      "impulse": 0.499,
+      "decay": 180
+    },
+    {
+      "time": 17322,
+      "target": "pulseBase",
+      "impulse": 0.529,
+      "decay": 180
+    },
+    {
+      "time": 17508,
+      "target": "pulseBase",
+      "impulse": 0.45499999999999996,
+      "decay": 180
+    },
+    {
+      "time": 17949,
+      "target": "pulseBase",
+      "impulse": 0.5549999999999999,
+      "decay": 180
+    },
+    {
+      "time": 18413,
+      "target": "pulseBase",
+      "impulse": 0.469,
+      "decay": 180
+    },
+    {
+      "time": 18646,
+      "target": "pulseBase",
+      "impulse": 0.51,
+      "decay": 180
+    },
+    {
+      "time": 18901,
+      "target": "pulseBase",
+      "impulse": 0.469,
+      "decay": 180
+    },
+    {
+      "time": 19365,
+      "target": "pulseBase",
+      "impulse": 0.546,
+      "decay": 180
+    },
+    {
+      "time": 19598,
+      "target": "pulseBase",
+      "impulse": 0.46699999999999997,
+      "decay": 180
+    },
+    {
+      "time": 19737,
+      "target": "pulseBase",
+      "impulse": 0.507,
+      "decay": 180
+    },
+    {
+      "time": 20526,
+      "target": "pulseBase",
+      "impulse": 0.534,
+      "decay": 180
+    },
+    {
+      "time": 21246,
+      "target": "pulseBase",
+      "impulse": 0.45999999999999996,
+      "decay": 180
+    },
+    {
+      "time": 21687,
+      "target": "pulseBase",
+      "impulse": 0.5740000000000001,
+      "decay": 180
+    },
+    {
+      "time": 22314,
+      "target": "pulseBase",
+      "impulse": 0.516,
+      "decay": 180
+    },
+    {
+      "time": 22407,
+      "target": "pulseBase",
+      "impulse": 0.512,
+      "decay": 180
+    },
+    {
+      "time": 23336,
+      "target": "pulseBase",
+      "impulse": 0.492,
+      "decay": 180
+    },
+    {
+      "time": 23568,
+      "target": "pulseBase",
+      "impulse": 0.46599999999999997,
+      "decay": 180
+    },
+    {
+      "time": 23800,
+      "target": "pulseBase",
+      "impulse": 0.473,
+      "decay": 180
+    },
+    {
+      "time": 24033,
+      "target": "pulseBase",
+      "impulse": 0.509,
+      "decay": 180
+    },
+    {
+      "time": 24265,
+      "target": "pulseBase",
+      "impulse": 0.494,
+      "decay": 180
+    },
+    {
+      "time": 24497,
+      "target": "pulseBase",
+      "impulse": 0.6779999999999999,
+      "decay": 180
+    },
+    {
+      "time": 24892,
+      "target": "pulseBase",
+      "impulse": 0.61,
+      "decay": 180
+    },
+    {
+      "time": 25913,
+      "target": "pulseBase",
+      "impulse": 0.489,
+      "decay": 180
+    },
+    {
+      "time": 26146,
+      "target": "pulseBase",
+      "impulse": 0.661,
+      "decay": 180
+    },
+    {
+      "time": 26865,
+      "target": "pulseBase",
+      "impulse": 0.472,
+      "decay": 180
+    },
+    {
+      "time": 27167,
+      "target": "pulseBase",
+      "impulse": 0.5449999999999999,
+      "decay": 180
+    },
+    {
+      "time": 27701,
+      "target": "pulseBase",
+      "impulse": 0.502,
+      "decay": 180
+    },
+    {
+      "time": 28259,
+      "target": "pulseBase",
+      "impulse": 0.5569999999999999,
+      "decay": 180
+    },
+    {
+      "time": 28746,
+      "target": "pulseBase",
+      "impulse": 0.45399999999999996,
+      "decay": 180
+    },
+    {
+      "time": 29907,
+      "target": "pulseBase",
+      "impulse": 0.46399999999999997,
+      "decay": 180
+    },
+    {
+      "time": 31068,
+      "target": "pulseBase",
+      "impulse": 0.526,
+      "decay": 180
+    },
+    {
+      "time": 31300,
+      "target": "pulseBase",
+      "impulse": 0.499,
+      "decay": 180
+    },
+    {
+      "time": 31533,
+      "target": "pulseBase",
+      "impulse": 0.56,
+      "decay": 180
+    },
+    {
+      "time": 31765,
+      "target": "pulseBase",
+      "impulse": 0.45599999999999996,
+      "decay": 180
+    },
+    {
+      "time": 31904,
+      "target": "pulseBase",
+      "impulse": 0.514,
+      "decay": 180
+    },
+    {
+      "time": 32020,
+      "target": "pulseBase",
+      "impulse": 0.475,
+      "decay": 180
+    },
+    {
+      "time": 32438,
+      "target": "pulseBase",
+      "impulse": 0.6859999999999999,
+      "decay": 180
+    },
+    {
+      "time": 32903,
+      "target": "pulseBase",
+      "impulse": 0.493,
+      "decay": 180
+    },
+    {
+      "time": 144341,
+      "target": "shakeMod",
+      "impulse": 1.0,
+      "decay": 600
+    }
+  ],
+  "sections": [
+    {
+      "id": "s0",
+      "start": 0,
+      "end": 21227,
+      "energy": 0.66,
+      "scene": "grid",
+      "palette": "calm"
+    },
+    {
+      "id": "s1",
+      "start": 21227,
+      "end": 118869,
+      "energy": 0.937,
+      "scene": "grid",
+      "palette": "calm"
+    },
+    {
+      "id": "s2",
+      "start": 118869,
+      "end": 144341,
+      "energy": 0.779,
+      "scene": "grid",
+      "palette": "calm"
+    },
+    {
+      "id": "s3",
+      "start": 144341,
+      "end": 254719,
+      "energy": 1.0,
+      "scene": "mosaic",
+      "palette": "trip"
+    },
+    {
+      "id": "s4",
+      "start": 254719,
+      "end": 271701,
+      "energy": 0.568,
+      "scene": "grid",
+      "palette": "calm"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "grid",
+      "areas": "\"c1 c2 c3 c4\"",
+      "columns": "repeat(4, 1fr)",
+      "rows": "auto",
+      "assignment": {
+        "c1": "c1",
+        "c2": "c2",
+        "c3": "c3",
+        "c4": "c4"
+      }
+    },
+    {
+      "id": "mosaic",
+      "areas": "\"c1 c1 c2 c3\" \"c1 c1 c4 c4\"",
+      "columns": "repeat(4, 1fr)",
+      "rows": "1fr 1fr",
+      "assignment": {
+        "c1": "c1",
+        "c2": "c2",
+        "c3": "c3",
+        "c4": "c4"
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "time": 144341,
+      "from": "grid",
+      "to": "mosaic",
+      "style": "flip",
+      "duration": 800,
+      "easing": "cubic-bezier(0.22,1,0.36,1)",
+      "lead": "c1"
+    }
+  ],
+  "palettes": [
+    {
+      "id": "calm",
+      "tokens": {
+        "--color-bg": "#2f86d5",
+        "--color-surface": "#ead9c8",
+        "--color-accent": "#ffe62b",
+        "--color-text": "#fff7ef",
+        "--color-muted": "#0a0b08",
+        "--contrast-hint": "9"
+      }
+    },
+    {
+      "id": "trip",
+      "tokens": {
+        "--color-bg": "#080b08",
+        "--color-surface": "#2f86d5",
+        "--color-accent": "#ff5b9e",
+        "--color-text": "#ffe62b",
+        "--color-muted": "#fff7ef",
+        "--contrast-hint": "9"
+      }
+    }
+  ],
+  "paletteTransitions": [
+    {
+      "time": 144341,
+      "from": "calm",
+      "to": "trip",
+      "style": "blend",
+      "duration": 2000
+    }
+  ],
+  "trails": {
+    "decay": 0.85,
+    "ghost": [
+      "accent"
+    ]
+  },
+  "energy": [
+    0.0,
+    0.119,
+    0.159,
+    0.25,
+    0.259,
+    0.243,
+    0.426,
+    0.325,
+    0.403,
+    0.248,
+    0.508,
+    0.563,
+    0.71,
+    0.638,
+    0.549,
+    0.708,
+    0.508,
+    0.962,
+    0.908,
+    0.752,
+    0.664,
+    0.788,
+    0.928,
+    0.655,
+    0.696,
+    0.66,
+    0.844,
+    0.39,
+    0.137,
+    0.28,
+    0.209,
+    0.387,
+    0.408,
+    0.301,
+    0.413,
+    0.383,
+    0.531,
+    0.464,
+    0.712,
+    0.746,
+    0.678,
+    0.813,
+    0.756,
+    0.371,
+    0.44,
+    0.358,
+    0.503,
+    0.459,
+    0.39,
+    0.366,
+    0.658,
+    0.813,
+    0.94,
+    0.836,
+    0.834,
+    0.601,
+    0.602,
+    0.979,
+    0.875,
+    1.0,
+    0.466,
+    0.146,
+    0.006,
+    0.0
+  ]
+}

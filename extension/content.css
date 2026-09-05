@@ -1,0 +1,129 @@
+/* Vibe Trip overlays — fixed, non-interactive, blended above the page. */
+
+.vibe-tint {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483640;
+  mix-blend-mode: hue;
+}
+
+.vibe-sat {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483641;
+  mix-blend-mode: saturation;
+}
+
+.vibe-viz {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483642;
+}
+
+.vibe-strobe {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483643;
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 50ms linear;
+}
+
+.vibe-border {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483642;
+  border: 10px solid transparent;
+  transition: border-color 80ms linear;
+}
+
+.vibe-rainbow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483639;
+  background: linear-gradient(90deg, #f00, #ff8000, #ff0, #0f0, #0ff, #00f, #80f, #f00);
+  background-size: 200% 100%;
+  mix-blend-mode: screen;
+  opacity: 0.14;
+  animation: vibe-rainbow-sweep 7s linear infinite;
+}
+
+@keyframes vibe-rainbow-sweep {
+  from {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.vibe-ca-r {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483638;
+  mix-blend-mode: screen;
+  background: rgba(255, 0, 60, 0.12);
+  animation: vibe-ca-r 3s ease-in-out infinite;
+}
+
+@keyframes vibe-ca-r {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.vibe-ca-c {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483637;
+  mix-blend-mode: screen;
+  background: rgba(0, 220, 255, 0.12);
+  animation: vibe-ca-c 3s ease-in-out infinite;
+}
+
+@keyframes vibe-ca-c {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+}
+
+.vibe-scan {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483636;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.1) 3px 4px);
+}
+
+.vibe-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483635;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle at 50% 50%, hsla(300, 100%, 60%, 0.3), transparent 70%);
+}
+
+.vibe-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483634;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.6) 100%);
+}

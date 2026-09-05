@@ -1,0 +1,16 @@
+{
+  "name": "vibe-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@vibe/demo",
+    "build": "npm run build --workspace=@vibe/demo",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "synth": "python3 apps/demo/scripts/synth_track.py"
+  }
+}
