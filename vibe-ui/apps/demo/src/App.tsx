@@ -101,6 +101,7 @@ export function App() {
       <Post>
         <Palette>
           <div className="page">
+            <ExtensionSection />
             <Hero />
             <Marquee />
             <Participate />
@@ -157,6 +158,50 @@ function Marquee() {
         </div>
       </div>
     </div>
+  );
+}
+
+function ExtensionSection() {
+  return (
+    <section className="section extension">
+      <div className="section-head">
+        <div className="eyebrow">Take it everywhere</div>
+        <h2 className="section-title">Rave any website</h2>
+        <p className="section-body">
+          This page is tripping to the music. Load the extension and <strong>every</strong> site you
+          visit turns into a light show — colors churn, buttons bounce to the beat, and a live
+          visualizer runs over Twitter, docs, anything.
+        </p>
+      </div>
+      <div className="extension-steps">
+        <div className="extension-step">
+          <div className="step-num">1</div>
+          <div>
+            <div className="step-title">Download the extension</div>
+            <div className="step-body">Grab the zip and unzip it anywhere.</div>
+          </div>
+        </div>
+        <div className="extension-step">
+          <div className="step-num">2</div>
+          <div>
+            <div className="step-title">Open chrome://extensions</div>
+            <div className="step-body">Toggle on Developer mode.</div>
+          </div>
+        </div>
+        <div className="extension-step">
+          <div className="step-num">3</div>
+          <div>
+            <div className="step-title">Load unpacked → pick the folder</div>
+            <div className="step-body">Click the icon, hit Start trip, and feel it.</div>
+          </div>
+        </div>
+      </div>
+      <div className="extension-cta">
+        <a className="btn" href="/vibe-trip-extension.zip" download>
+          Download the extension (.zip) ↓
+        </a>
+      </div>
+    </section>
   );
 }
 

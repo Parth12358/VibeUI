@@ -84,8 +84,13 @@ export function Visualizer() {
       const cy = h / 2;
       const ringR = (0.18 + bass * 0.5) * Math.min(w, h);
       g.save();
+      g.strokeStyle = "rgba(0,0,0,0.5)";
+      g.lineWidth = 14 * dpr;
+      g.beginPath();
+      g.arc(cx, cy, ringR, 0, Math.PI * 2);
+      g.stroke();
       g.strokeStyle = `hsla(${(t * 80) % 360} 100% 60% / 0.9)`;
-      g.lineWidth = 8 * dpr;
+      g.lineWidth = 6 * dpr;
       g.shadowColor = `hsl(${(t * 80) % 360} 100% 60%)`;
       g.shadowBlur = 30 * dpr;
       g.beginPath();
@@ -134,7 +139,7 @@ export function Visualizer() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, [motion]);
+  }, [motion, playing]);
 
   const flash = Math.max(0, (pulse - 0.55) * 2.2);
 

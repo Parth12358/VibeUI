@@ -25,9 +25,9 @@ let bursts = [];
 const CHROME_URL = /^(https?|file):/i;
 
 const JUMP_SELECTORS = "a, button, h1, h2, h3, h4, img, div, section, article, li, [role='button'], .btn";
-let pool = [];
-const bobAnims = new Map(); // element -> Animation
-let appliedPeriodMs = 0;
+let pool = []; // { el, base }
+let kick = 0;
+let lastKickAt = 0;
 
 const TEXT_SELECTORS = "h1, h2, h3, h4, h5, h6, p, span, a, li, button, label, td, th, blockquote, strong, em";
 let textPool = [];
@@ -44,6 +44,8 @@ function start(int) {
   if (on) return;
   on = true;
   intensity = clamp(int, 1, 10);
+  kick = 0;
+  lastKickAt = 0;
   if (!CHROME_URL.test(location.protocol)) return;
   console.log("[vibe] start");
   inject();
@@ -61,11 +63,9 @@ function stop() {
 }
 
 function cancelBobs() {
-  for (const a of bobAnims.values()) a.cancel();
-  bobAnims.clear();
+  for (const p of pool) p.el.style.transform = p.base;
   pool = [];
   pool._ts = 0;
-  appliedPeriodMs = 0;
   for (const a of textAnims.values()) a.cancel();
   textAnims.clear();
   textPool = [];
@@ -152,7 +152,8 @@ function onFrame(data) {
     state.strobeUntil = performance.now() + 130;
     shockwaves.push({ t0: performance.now(), impulse });
     spawnBurst(impulse);
-    kickElements(impulse);
+    kick = Math.max(kick, impulse);
+    lastKickAt = performance.now();
   }
 }
 
@@ -197,7 +198,12 @@ function loop() {
   els.border.style.borderColor = `hsl(${hue} 100% 60%)`;
   els.border.style.boxShadow = `inset 0 0 ${(40 + state.bass * 120).toFixed(0)}px hsla(${hue} 100% 60% / ${(0.25 + state.bass * 0.5).toFixed(2)})`;
 
-  updateBob(0.4 + e * 2.6);
+  // Continuous beat-synced bob + decaying kick, applied as direct inline transforms (same
+  // technique as the vibe-ui demo — guaranteed to move divs, buttons, and headings).
+  kick *= Math.exp(-(t - lastKickAt) / 180);
+  const bob = Math.sin((2 * Math.PI * t) / beatPeriodMs) * (0.45 + 0.3 * e);
+  applyJump(bob + kick);
+
   updateTextHue(0.4 + e * 3);
 
   drawViz(t, e);
@@ -343,56 +349,39 @@ function drawViz(t, e) {
 function ensurePool() {
   const now = performance.now();
   if (pool.length && now - pool._ts < 5000) return;
-  for (const a of bobAnims.values()) a.cancel();
-  bobAnims.clear();
-  pool = Array.from(document.querySelectorAll(JUMP_SELECTORS))
-    .filter((el) => {
-      const oh = el.offsetHeight;
-      if (!oh || oh < 8 || oh > 400) return false;
-      const r = el.getBoundingClientRect();
-      return r.width > 8 && r.top < window.innerHeight && r.bottom > 0;
-    })
-    .slice(0, 64);
+  pool = [];
+  const all = document.querySelectorAll(JUMP_SELECTORS);
+  const chosenSet = new Set();
+  for (const el of all) {
+    if (pool.length >= 100) break;
+    const oh = el.offsetHeight;
+    if (!oh || oh < 10 || oh > 500) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width < 20 || r.top > window.innerHeight || r.bottom < 0) continue;
+    let p = el.parentElement;
+    let skip = false;
+    while (p && p !== document.documentElement) {
+      if (chosenSet.has(p)) {
+        skip = true;
+        break;
+      }
+      p = p.parentElement;
+    }
+    if (skip) continue;
+    chosenSet.add(el);
+    pool.push({ el, base: el.style.transform || "" });
+  }
   pool._ts = now;
 }
 
-function updateBob(rate) {
+function applyJump(pulse) {
   ensurePool();
-  const periodChanged = beatPeriodMs !== appliedPeriodMs;
-  const amp = (5 + intensity) * 0.75; // scaled back so the bob stays on-beat
-  for (const el of pool) {
-    let a = bobAnims.get(el);
-    if (!a) {
-      a = el.animate(
-        [
-          { transform: "translateY(0px) scale(1)", offset: 0 },
-          { transform: `translateY(${-amp}px) scale(1.02)`, offset: 0.5 },
-          { transform: "translateY(0px) scale(1)", offset: 1 },
-        ],
-        { duration: beatPeriodMs, iterations: Infinity, composite: "add", easing: "ease-in-out" },
-      );
-      bobAnims.set(el, a);
-    } else if (periodChanged) {
-      a.effect?.updateTiming({ duration: beatPeriodMs });
-    }
-    a.playbackRate = rate;
-  }
-  appliedPeriodMs = beatPeriodMs;
-}
-
-function kickElements(impulse) {
-  ensurePool();
-  const amp = (6 + impulse * 20) * (intensity / 7) * 0.75;
-  const rot = impulse * 3;
-  for (const el of pool) {
-    el.animate(
-      [
-        { transform: "translateY(0px) scale(1) rotate(0deg)" },
-        { transform: `translateY(${-amp}px) scale(${1 + impulse * 0.12}) rotate(${rot}deg)`, offset: 0.3 },
-        { transform: "translateY(0px) scale(1) rotate(0deg)" },
-      ],
-      { duration: 180 + impulse * 120, composite: "add", easing: "ease-out" },
-    );
+  const ampPx = (6 + intensity) * 0.75;
+  const y = -pulse * ampPx;
+  const s = 1 + Math.abs(pulse) * 0.12;
+  const t = `translate3d(0, ${y.toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
+  for (const p of pool) {
+    p.el.style.transform = p.base ? `${p.base} ${t}` : t;
   }
 }
 
