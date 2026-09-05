@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import type { Choreography, MotionMode } from "@vibe/core";
-import { VibeProvider, Post, Palette, World, Card, Button, Text, useVibe } from "@vibe/react";
+import { VibeProvider, Post, Palette, World, Card, Button, Text, useVibe, useChannel } from "@vibe/react";
 import { quickChoreography } from "./quickChoreography";
 import { Visualizer } from "./Visualizer";
 import synthDemo from "./fixtures/synth_demo.json";
@@ -174,34 +174,51 @@ function ExtensionSection() {
         </p>
       </div>
       <div className="extension-steps">
-        <div className="extension-step">
+        <Card sensitivity={0.9} baseRadius={0} className="extension-step">
           <div className="step-num">1</div>
           <div>
             <div className="step-title">Download the extension</div>
             <div className="step-body">Grab the zip and unzip it anywhere.</div>
           </div>
-        </div>
-        <div className="extension-step">
+        </Card>
+        <Card sensitivity={1.05} baseRadius={0} className="extension-step">
           <div className="step-num">2</div>
           <div>
             <div className="step-title">Open chrome://extensions</div>
             <div className="step-body">Toggle on Developer mode.</div>
           </div>
-        </div>
-        <div className="extension-step">
+        </Card>
+        <Card sensitivity={1.2} baseRadius={0} className="extension-step">
           <div className="step-num">3</div>
           <div>
             <div className="step-title">Load unpacked → pick the folder</div>
             <div className="step-body">Click the icon, hit Start trip, and feel it.</div>
           </div>
-        </div>
+        </Card>
       </div>
       <div className="extension-cta">
-        <a className="btn" href="/vibe-trip-extension.zip" download>
-          Download the extension (.zip) ↓
-        </a>
+        <ExtensionDownload />
       </div>
     </section>
+  );
+}
+
+/** Same motion as <Button>, but stays a real <a download> so the zip still downloads. */
+function ExtensionDownload() {
+  const pulse = useChannel("pulse", 0.9);
+  const breath = useChannel("breath", 0.9);
+  const jump = pulse * 22;
+  return (
+    <a
+      className="btn"
+      href="/vibe-trip-extension.zip"
+      download
+      style={{
+        transform: `translateY(${(-jump).toFixed(2)}px) scale(${(1 + breath * 0.02 + Math.abs(pulse) * 0.22).toFixed(4)}) rotate(${(pulse * 3).toFixed(2)}deg)`,
+      }}
+    >
+      Download the extension (.zip) ↓
+    </a>
   );
 }
 
