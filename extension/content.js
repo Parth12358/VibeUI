@@ -344,31 +344,19 @@ function drawViz(t, e) {
   ctx.shadowBlur = 0;
 }
 
-// --- element jumping: continuous bob + transient kicks, all via composite:"add" (non-destructive) ---
+// --- element jumping: continuous beat-synced bob + decaying kick, applied as inline transforms ---
 
 function ensurePool() {
   const now = performance.now();
   if (pool.length && now - pool._ts < 5000) return;
   pool = [];
   const all = document.querySelectorAll(JUMP_SELECTORS);
-  const chosenSet = new Set();
   for (const el of all) {
-    if (pool.length >= 100) break;
+    if (pool.length >= 128) break;
     const oh = el.offsetHeight;
     if (!oh || oh < 10 || oh > 500) continue;
     const r = el.getBoundingClientRect();
     if (r.width < 20 || r.top > window.innerHeight || r.bottom < 0) continue;
-    let p = el.parentElement;
-    let skip = false;
-    while (p && p !== document.documentElement) {
-      if (chosenSet.has(p)) {
-        skip = true;
-        break;
-      }
-      p = p.parentElement;
-    }
-    if (skip) continue;
-    chosenSet.add(el);
     pool.push({ el, base: el.style.transform || "" });
   }
   pool._ts = now;
